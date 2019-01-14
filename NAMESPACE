@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+
+importFrom(utils, assignInNamespace)
+importFrom(bookdown, html_book) # to make check a little happier

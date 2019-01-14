@@ -1,0 +1,13 @@
+Package: magyarbookdown
+Type: Package
+Title: Support @aref
+Version: 0.1.0
+Author: Duncan Murdoch
+Maintainer: Duncan Murdoch <murdoch.duncan@gmail.com>
+Description: The Babel package has a macro to support
+    Hungarian language references.  This adds it to the 'bookdown'
+    package.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: bookdown
