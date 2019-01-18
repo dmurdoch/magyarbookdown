@@ -1,8 +1,10 @@
 ref_to_number = function(ref, ref_table, backslash) {
   if (length(ref) == 0) return(ref)
   magyar_article = function(num) {
+    num <- sub("[.].*$", "", num)
+    num <- sub("[^[:digit:]]", "", num)
     ifelse(grepl("^5", num) |
-           (grepl("^1", num) & (nchar(num) %% 3 == 1)), "ar", "a")
+           (grepl("^1", num) & (nchar(num) %% 3 == 1)), "az", "a")
   }
   aref = grepl("@aref", ref)
   lab = gsub(if (backslash) '^\\\\@a?ref\\(|\\)$' else '^@a?ref\\(|\\)$', '', ref)
@@ -14,11 +16,11 @@ ref_to_number = function(ref, ref_table, backslash) {
       warning('The label(s) ', paste(lab[i], collapse = ', '), ' not found', call. = FALSE)
     num[i] = '<strong>??</strong>'
   }
-  ar <- magyar_article(num[aref])
+  az <- magyar_article(num[aref])
   # equation references should include parentheses
   i = grepl('^eq:', ref)
   num[i] = paste0('(', num[i], ')')
-  num[aref] <- paste(ar, num[aref])
+  num[aref] <- paste(az, num[aref])
   res = sprintf('<a href="#%s">%s</a>', ref, num)
   # do not add relative links to equation numbers in ePub/Word (not implemented)
   ifelse(backslash & i, num, res)
