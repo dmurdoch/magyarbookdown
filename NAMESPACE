@@ -1,4 +1,4 @@
-exportPattern("^[[:alpha:]]+")
+export(ref_to_number, resolve_refs_html, resolve_refs_latex)
 
-importFrom(utils, assignInNamespace)
+importFrom(utils, assignInNamespace, removeSource)
 importFrom(bookdown, html_book) # to make check a little happier
