@@ -20,8 +20,8 @@ ref_to_number = function(ref, ref_table, backslash) {
   # equation references should include parentheses
   i = grepl('^eq:', ref)
   num[i] = paste0('(', num[i], ')')
-  num[aref] <- paste(az, num[aref])
   res = sprintf('<a href="#%s">%s</a>', ref, num)
+  res[aref] <- paste(az, res[aref])
   # do not add relative links to equation numbers in ePub/Word (not implemented)
   ifelse(backslash & i, num, res)
 }

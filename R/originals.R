@@ -9,6 +9,15 @@ check <- function(fun, env) {
     warning("Arguments for ", paste0("bookdown::", fun), " have changed.")
 }
 
+globalVariables(c("prefix_section_labels",
+                  "opts",
+                  "resolve_ref_links_html",
+                  "parse_fig_labels",
+                  "parse_section_labels",
+                  "is_img_line",
+                  "strip_html",
+                  "reg_label_types"))
+
 ref_to_number0 <- function (ref, ref_table, backslash)
 {
   if (length(ref) == 0)
